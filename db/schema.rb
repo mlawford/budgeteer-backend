@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 20171108223412) do
   create_table "category_budgets", force: :cascade do |t|
     t.string "category_name"
     t.integer "category_budget_total"
+    t.integer "monthly_budget_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "monthly_budgets", force: :cascade do |t|
     t.integer "budget_total"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
