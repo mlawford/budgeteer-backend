@@ -10,6 +10,11 @@ class Api::MonthlyBudgetsController < ApplicationController
     @monthly_budget = MonthlyBudget.create(monthly_budget_params)
   end
 
+  def show
+    @monthly_budget = MonthlyBudget.find(params[:id])
+    render json: @monthly_budget
+  end
+
   def update
     @monthly_budget = MonthlyBudget.find(params[:id])
     @monthly_budget.update(monthly_budget_params)

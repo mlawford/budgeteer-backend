@@ -7,11 +7,16 @@ class Api::CategoryBudgetsController < ApplicationController
 
 
   def create
-    
-    @category_budget1 = CategoryBudget.create(category_budget_params.category1Key)
-    @category_budget2 = CategoryBudget.create(category_budget_params.category2Key)
-    @category_budget3 = CategoryBudget.create(category_budget_params.category3Key)
 
+    @category_budget1 = CategoryBudget.create({category_name: category1_budget_params[:category_name], category_budget_total: category1_budget_params[:category_budget_total], monthly_budget_id: MonthlyBudget.last.id})
+    @category_budget2 = CategoryBudget.create({category_name: category2_budget_params[:category_name], category_budget_total: category2_budget_params[:category_budget_total], monthly_budget_id: MonthlyBudget.last.id})
+    @category_budget3 = CategoryBudget.create({category_name: category3_budget_params[:category_name], category_budget_total: category3_budget_params[:category_budget_total], monthly_budget_id: MonthlyBudget.last.id})
+
+  end
+
+  def show
+    @category_budget = CategoryBudget.find(params[:id])
+    render json: @category_budget
   end
 
   def update
@@ -28,9 +33,19 @@ class Api::CategoryBudgetsController < ApplicationController
 
   private
 
-    def category_budget_params
-       params.permit(:category1Key, :category2Key, :category3Key)
+    def category1_budget_params
+       params.require(:category1Key).permit(:category_name, :category_budget_total, :monthly_budget_id)
     end
+
+    def category2_budget_params
+       params.require(:category2Key).permit(:category_name, :category_budget_total, :monthly_budget_id)
+    end
+
+    def category3_budget_params
+       params.require(:category3Key).permit(:category_name, :category_budget_total, :monthly_budget_id)
+    end
+
+
 
 
 end
