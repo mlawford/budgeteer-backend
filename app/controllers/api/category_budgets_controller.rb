@@ -7,7 +7,11 @@ class Api::CategoryBudgetsController < ApplicationController
 
 
   def create
-    @category_budget = CategoryBudget.create(category_budget_params)
+    
+    @category_budget1 = CategoryBudget.create(category_budget_params.category1Key)
+    @category_budget2 = CategoryBudget.create(category_budget_params.category2Key)
+    @category_budget3 = CategoryBudget.create(category_budget_params.category3Key)
+
   end
 
   def update
@@ -25,7 +29,7 @@ class Api::CategoryBudgetsController < ApplicationController
   private
 
     def category_budget_params
-       params.require(:category_budget).permit(:id,:category_name, :category_budget_total, :monthly_budget_id)
+       params.permit(:category1Key, :category2Key, :category3Key)
     end
 
 
