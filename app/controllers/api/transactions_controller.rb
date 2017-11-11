@@ -1,4 +1,4 @@
-class TransactionsController < ApplicationController
+class Api::TransactionsController < ApplicationController
   def index
     @transactions = Transaction.all
     render json: @transactions
@@ -6,7 +6,8 @@ class TransactionsController < ApplicationController
 
 
   def create
-    @transaction = Transaction.create(monthly_budget_params)
+    # Hard coded category budget id tentatively
+    @transaction = Transaction.create(name: transaction_params[:name], amount: transaction_params[:amount], category_budget_id: 1)
   end
 
   def show
@@ -16,12 +17,19 @@ class TransactionsController < ApplicationController
 
   def update
     @transaction = Transaction.find(params[:id])
-    @transaction.update(monthly_budget_params)
+    @transaction.update(transaction_params)
 
   end
 
   def delete
     @transaction = Transaction.find(params[:id])
     @transaction.destroy()
+  end
+
+
+  private
+
+  def transaction_params
+    params.require(:transaction).permit(:name, :amount, :category_budget_id)
   end
 end
