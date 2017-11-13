@@ -6,8 +6,7 @@ class Api::TransactionsController < ApplicationController
 
 
   def create
-    # Hard coded category budget id tentatively
-    @transaction = Transaction.create(name: transaction_params[:name], amount: transaction_params[:amount], category_budget_id: 1)
+    @transaction = Transaction.create(transaction_params)
   end
 
   def show
