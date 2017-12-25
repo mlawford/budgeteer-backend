@@ -1,25 +1,13 @@
-# README
+# Budgeteer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Budgeteer
 
-Things you may want to cover:
+This repository contains the backend of the project; the frontend can be found [here](https://github.com/ryansperzel/budgeteer-frontend)
 
-* Ruby version
+### Frontend
 
-* System dependencies
+The component-based **JavaScript** frontend was built with **React**. We used **Semantic UI React** along with custom **CSS** to style the frontend. **Chart.js** was used to display expenditure data.
 
-* Configuration
+### Backend
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# budget-app-backend
+The backend API was built with **Ruby on Rails**, and we used **PostgreSQL** for the database.
